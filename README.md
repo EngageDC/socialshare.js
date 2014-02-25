@@ -36,21 +36,21 @@ Paste directly after the `<body>` opening tag.p
 
 > **Note:** Make sure to add appriopriate [Facebook OpenGraph](http://davidwalsh.name/facebook-meta-tags) meta tags (And [Twitter Cards](https://dev.twitter.com/docs/cards))
 
-## Facebook share button example
+### Facebook share button example
 ```html
 <a href="#" class="facebook-share" data-share-link="http://example.com" data-share-caption="Facebook caption goes here">
   <i class="fa fa-facebook"></i>
 </a>
 ```
 
-## Twitter share button example
+### Twitter share button example
 ```html
 <a href="#" class="twitter-share" data-share-text="Twitter share text goes here">
   <i class="fa fa-twitter"></i>
 </a>
 ```
 
-## Print button example
+### Print button example
 ```html
 <a href="#" class="print-share">
   <i class="fa fa-print"></i>
