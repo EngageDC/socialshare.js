@@ -39,13 +39,31 @@ Paste directly after the `<body>` opening tag.p
 ## Facebook share button example
 ```html
 <a href="#" class="facebook-share" data-share-link="http://example.com" data-share-caption="Facebook caption goes here">
-	<i class="fa fa-facebook"></i>
+  <i class="fa fa-facebook"></i>
 </a>
 ```
 
 ## Twitter share button example
 ```html
 <a href="#" class="twitter-share" data-share-text="Twitter share text goes here">
-	<i class="fa fa-twitter"></i>
+  <i class="fa fa-twitter"></i>
+</a>
+```
+
+## Print button example
+```html
+<a href="#" class="print-share">
+  <i class="fa fa-print"></i>
+</a>
+```
+
+## Share count
+
+`socialshare.js` also supports displaying share count, just add an element with the `count` class as the child of your share button and `socialshare.js` will automatically detect and load share count via *AJAX*.
+
+```html
+<a href="#" class="facebook-share" data-share-link="http://example.com" data-share-caption="Facebook caption goes here">
+  <i class="fa fa-facebook"></i>
+  <span class="count"></span>
 </a>
 ```
