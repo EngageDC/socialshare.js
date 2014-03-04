@@ -50,6 +50,13 @@ Paste directly after the `<body>` opening tag.p
 </a>
 ```
 
+### Google+ share button example
+```html
+<a href="#" class="googleplus-share" data-share-link="http://example.com">
+  <i class="fa fa-google-plus"></i>
+</a>
+```
+
 ### Print button example
 ```html
 <a href="#" class="print-share">
