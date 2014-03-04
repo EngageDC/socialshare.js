@@ -16,6 +16,11 @@ var socialshare = {
             return false;
         });
 
+        jQuery('.googleplus-share').click(function() {
+            socialshare.shareGooglePlus(jQuery(this).data('share-link'));
+            return false;
+        });
+
         jQuery('.print-share').click(function() {
             socialshare.sharePrint();
             return false;
@@ -59,6 +64,14 @@ var socialshare = {
             'https://twitter.com/intent/tweet?text='+encodeURIComponent(text),
             'twitter-share-dialog',
             'width=626,height=436,top='+((screen.height - 436) / 2)+',left='+((screen.width - 626) / 2)
+        );
+    },
+
+    shareGooglePlus: function (link) {
+        window.open(
+            'https://plus.google.com/share?url='+encodeURIComponent(link),
+            'googleplus-share-dialog',
+            'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600,top='+((screen.height - 600) / 2)+',left='+((screen.width - 600) / 2)
         );
     },
 
