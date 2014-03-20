@@ -27,18 +27,44 @@ var socialshare = {
         });
 
         // Share counts
-        if (jQuery('.facebook-share .count').length) {
-            var query = 'SELECT like_count, total_count, share_count, click_count, comment_count FROM link_stat WHERE url="'+ document.location +'"';
-            $.get('https://graph.facebook.com/fql?q=' + encodeURIComponent(query), function (response) {
-                jQuery('.facebook-share .count').html(socialshare.formatCount(response.data[0].total_count));
-            }, 'jsonp');
-        }
+        jQuery('.facebook-share').each(function () {
+            var $obj = $(this);
+            (function ($obj) {
+                var $count = $obj.find('.count');
 
-        if (jQuery('.twitter-share .count').length) {
-            $.get('http://cdn.api.twitter.com/1/urls/count.json?&url=' + encodeURIComponent(document.location), function (response) {
-                jQuery('.twitter-share .count').html(socialshare.formatCount(response.count));
-            }, 'jsonp');
-        }
+                if ($count.length) {
+                    var link = $obj.data('share-link');
+
+                    if (typeof(link) === 'undefined') {
+                        link = document.location.href;
+                    }
+
+                    var query = 'SELECT like_count, total_count, share_count, click_count, comment_count FROM link_stat WHERE url="'+ link +'"';
+                    $.get('https://graph.facebook.com/fql?q=' + encodeURIComponent(query), function (response) {
+                        $count.html(socialshare.formatCount(response.data[0].total_count));
+                    }, 'jsonp');
+                }
+            })($obj);
+        });
+
+        jQuery('.twitter-share').each(function () {
+            var $obj = $(this);
+            (function ($obj) {
+                var $count = $obj.find('.count');
+
+                if ($count.length) {
+                    var link = $obj.data('share-link');
+
+                    if (typeof(link) === 'undefined') {
+                        link = document.location.href;
+                    }
+
+                    $.get('http://cdn.api.twitter.com/1/urls/count.json?&url=' + encodeURIComponent(link), function (response) {
+                        $count.html(socialshare.formatCount(response.count));
+                    }, 'jsonp');
+                }
+            })($obj);
+        });
     },
 
     formatCount: function (count) {
@@ -54,14 +80,14 @@ var socialshare = {
           method: 'feed',
           link: link,
           caption: caption
-        }, function(response){
+        }, function(response) {
 
         });
     },
 
     shareTwitter: function (text) {
         window.open(
-            'https://twitter.com/intent/tweet?text='+encodeURIComponent(text),
+            'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text),
             'twitter-share-dialog',
             'width=626,height=436,top='+((screen.height - 436) / 2)+',left='+((screen.width - 626) / 2)
         );
@@ -69,7 +95,7 @@ var socialshare = {
 
     shareGooglePlus: function (link) {
         window.open(
-            'https://plus.google.com/share?url='+encodeURIComponent(link),
+            'https://plus.google.com/share?url=' + encodeURIComponent(link),
             'googleplus-share-dialog',
             'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600,top='+((screen.height - 600) / 2)+',left='+((screen.width - 600) / 2)
         );
