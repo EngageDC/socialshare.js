@@ -28,7 +28,7 @@ var socialshare = {
 
         // Share counts
         jQuery('.facebook-share').each(function () {
-            var $obj = $(this);
+            var $obj = jQuery(this);
             (function ($obj) {
                 var $count = $obj.find('.count');
 
@@ -48,7 +48,7 @@ var socialshare = {
         });
 
         jQuery('.twitter-share').each(function () {
-            var $obj = $(this);
+            var $obj = jQuery(this);
             (function ($obj) {
                 var $count = $obj.find('.count');
 
